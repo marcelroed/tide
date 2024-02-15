@@ -16,5 +16,24 @@ function _tide_item_python
     else if path is .python-version Pipfile __init__.py pyproject.toml requirements.txt setup.py
         python --version | string match -qr "(?<v>[\d.]+)"
         _tide_print_item python $tide_python_icon' ' $v
+    else if string match -q "*miniforge*" $(which python)
+        python --version | string match -qr "(?<v>[\d.]+)"
+        set vsplit (string split '.' $v)
+        set vshort (string join '.' $vsplit[1] $vsplit[2])
+        # string match -qr "^.*\/(?<envname>.*)" $CONDA_PREFIX
+
+        # Check if base is active
+        if string match -q "*/base/bin/*" $(which python)
+            # In base
+            set envname "base"
+        else
+            which python | string match -qr "envs\/(?<envname>.*)\/bin"
+        end
+
+        if test $envname = $vshort
+            _tide_print_item python $tide_python_icon' ' "$envname"
+        else
+            _tide_print_item python $tide_python_icon' ' "$envname ($vshort)"
+        end
     end
 end
