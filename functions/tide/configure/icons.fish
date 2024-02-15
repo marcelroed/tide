@@ -1,4 +1,5 @@
 tide_aws_icon  # Actual aws glyph is harder to see
+tide_bun_icon 󰳓
 tide_character_icon ❯
 tide_character_vi_icon_default ❮
 tide_character_vi_icon_replace ▶
@@ -31,7 +32,7 @@ tide_rustc_icon 
 tide_shlvl_icon 
 tide_status_icon ✔
 tide_status_icon_failure ✘
-tide_terraform_icon
+tide_terraform_icon 󱁢
 tide_toolbox_icon 
 tide_vi_mode_icon_default D
 tide_vi_mode_icon_insert I
